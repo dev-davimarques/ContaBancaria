@@ -2,12 +2,23 @@ package utils;
 
 public class ContaBancaria {
 
-    private String cliente;
-    private int numConta;
-    private double saldo;
+    private final String cliente;
+    private final int numConta;
+    protected double saldo;
 
     // Construtor
     public ContaBancaria(String cliente, int numConta, double saldo){
+
+        if(cliente == null || cliente.isBlank()){
+            throw new IllegalArgumentException("O nome do Cliente não pode ser nulo ou vazio.");
+        }
+        if (numConta < 0) {
+            throw new IllegalArgumentException("O número da conta deve ser positivo.");
+        }
+        if (saldo < 0) {
+            throw new IllegalArgumentException("O saldo inicial não pode ser negativo.");
+        }
+
         this.cliente = cliente;
         this.numConta = numConta;
         this.saldo = saldo;
@@ -31,14 +42,14 @@ public class ContaBancaria {
 
     public void depositar(double valor){
         if (valor <= 0){
-            throw new IllegalArgumentException("Valor de deposito deve ser positivo");
+            throw new IllegalArgumentException("Valor de depósito deve ser positivo.");
         }
         this.saldo += valor;
     }
 
     @Override
     public String toString() {
-        return String.format("Cliente: %s | Conta: %d | Saldo: %.2f",cliente, numConta, saldo);
+        return String.format("Cliente: %s | Conta: %d | Saldo Inicial: %.2f",cliente, numConta, saldo);
     }
     
 
