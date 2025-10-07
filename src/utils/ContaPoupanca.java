@@ -10,10 +10,7 @@ public class ContaPoupanca extends ContaBancaria{
     }
     public ContaPoupanca(String cliente, int numConta, double saldo, double taxaRendimento){
         super(cliente, numConta, saldo);
-        if (taxaRendimento < 0){
-            throw new IllegalArgumentException("A taxa de rendimento não pode ser negativa");
-        }
-        this.taxaRendimento = taxaRendimento;
+        setTaxaRendimento(taxaRendimento);
     }
     
 

@@ -6,10 +6,7 @@ public class ContaCorrente extends ContaBancaria{
     // Construtor
     public ContaCorrente(String cliente, int numConta, double saldo, double limite){
         super(cliente, numConta, saldo);
-        if (limite < 0){
-            throw new IllegalArgumentException("O limite não pode ser negativo.");
-        }
-        this.limite = limite;
+        setLimite(limite);
     }
 
     // Getters e Setters
